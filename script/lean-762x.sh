@@ -31,7 +31,7 @@ rm -rf feeds/packages/net/{simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v
 #rm -rf feeds/packages/devel/gn
 #rm -rf feeds/packages/utils/v2dat
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-openclash,luci-app-mosdns}
-#git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
+git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 sed -i 's/ShadowSocksR Plus+/Hello World/g' package/helloworld/luci-app-ssr-plus/po/zh_Hans/ssr-plus.po
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
