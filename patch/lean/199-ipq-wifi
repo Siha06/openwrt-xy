@@ -53,7 +53,7 @@ echo "DISTRIB_DESCRIPTION='OpenWrt  '" >> /etc/openwrt_release
 
 OPENCLASH_FILE="/etc/config/openclash"
 if [ -f "$OPENCLASH_FILE" ]; then
-    mv /etc/openclash/core/my-clash /etc/openclash/core/clash_meta
+    mv /etc/my-clash /etc/openclash/core/clash_meta
 fi
 
 /etc/init.d/network restart
