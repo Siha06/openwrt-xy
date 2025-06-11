@@ -54,6 +54,7 @@ CONFIG_PACKAGE_kmod-md-raid0=y
 CONFIG_PACKAGE_kmod-md-raid10=y
 CONFIG_PACKAGE_kmod-md-raid1=y
 
+CONFIG_PACKAGE_luci-app-dockerman=y
 CONFIG_PACKAGE_luci-app-lucky=y
 CONFIG_PACKAGE_luci-app-ddns-go=y
 CONFIG_PACKAGE_luci-app-adguardhome=y
