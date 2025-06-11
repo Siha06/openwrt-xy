@@ -49,11 +49,11 @@ git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspee
 git clone --depth 1 -b js https://github.com/sirpdboy/luci-theme-kucat.git package/luci-theme-kucat
 mv $GITHUB_WORKSPACE/patch/lean/ezopwrt/netwizard.lua package/luci-app-netwizard/luci-app-netwizard/luasrc/controller/netwizard.lua
 
-rm -rf feeds/luci/applications/luci-app-socat
-git clone --depth 1 https://github.com/sirpdboy/sirpdboy-package.git package/sirpdboy-package
+#rm -rf feeds/luci/applications/luci-app-socat
+#git clone --depth 1 https://github.com/sirpdboy/sirpdboy-package.git package/sirpdboy-package
 #mv package/sirpdboy-package/luci-app-pppoe-server package/luci-app-pppoe-server
-mv package/sirpdboy-package/luci-app-socat package/luci-app-socat
-rm -rf package/sirpdboy-package
+#mv package/sirpdboy-package/luci-app-socat package/luci-app-socat
+#rm -rf package/sirpdboy-package
 
 
 rm -rf feeds/packages/utils/docker
