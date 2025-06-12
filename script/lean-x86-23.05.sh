@@ -18,6 +18,10 @@ if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     rm -rf package/openclash-core
 fi
 mv $GITHUB_WORKSPACE/patch/lean/199-x86-23.05 package/base-files/files/etc/uci-defaults/zz-diy
+#修复TailScale配置文件冲突
+sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
+rm -rf feeds/luci/applications/luci-app-tailscale
+git clone --depth 1 https://github.com/asvow/luci-app-tailscale package/luci-app-tailscale
 
 git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
 git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
