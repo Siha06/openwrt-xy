@@ -32,6 +32,13 @@ fi
 #mv /etc/adg.tar.gz /root/diy/adg.tar.gz
 #sysupgrade --restore-backup /root/diy/adg.tar.gz
 
-#/etc/init.d/network restart
+uci set dhcp.lan.ignore=1
+uci set network.lan.proto='dhcp'
+uci commit dhcp
+uci commit network
+uci set luci.main.mediaurlbase=/luci-static/design
+uci commit luci
+uci commit
+/etc/init.d/network restart
 
 exit 0
