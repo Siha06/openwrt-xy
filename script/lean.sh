@@ -7,43 +7,35 @@ sed -i 's/LEDE/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 mv $GITHUB_WORKSPACE/patch/lean/199-diy package/base-files/files/etc/uci-defaults/zz-diy
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 
-#mv $GITHUB_WORKSPACE/patch/lean/adg/AdGuardHome.yaml package/base-files/files/etc/my-adgh.yaml
-#mv $GITHUB_WORKSPACE/patch/lean/adg/firewall package/base-files/files/etc/my-firewall
-#mv $GITHUB_WORKSPACE/patch/lean/adg/firewall.user package/base-files/files/etc/my-firewall.user
-#mv $GITHUB_WORKSPACE/patch/lean/mac80211.sh package/kernel/mac80211/files/lib/wifi/mac80211.sh
-
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-    mv package/openclash-core/master/meta/clash-linux-arm64.tar.gz package/base-files/files/etc/clash-linux-arm64.tar.gz
+    tar -zxf package/openclash-core/master/meta/clash-linux-arm64.tar.gz -C package/base-files/files/etc/
+    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
     rm -rf package/openclash-core
 fi
 
-# 添加kenzok8_small插件库, 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 rm -rf feeds/packages/lang/golang
-git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
-#删除自带的老旧依赖，ssr-plus，passwall
-rm -rf feeds/packages/net/{chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev}
-rm -rf feeds/packages/net/{simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
-#rm -rf feeds/packages/net/{dns2socks-rust,dns2tcp,dnsproxy,gn,redsocks2,shadow-tls,trojan,v2ray-core}
-#rm -rf feeds/packages/devel/gn
-#rm -rf feeds/packages/utils/v2dat
-rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-openclash,luci-app-mosdns}
-#git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
+git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
+git clone --depth 1 https://github.com/vernesong/OpenClash.git package/OpenClash
+git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
+git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
-git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
-
-rm -rf feeds/packages/net/v2ray-geodata
-rm -rf feeds/packages/net/mosdns
+rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
+rm -rf feeds/packages/net/{mosdns,v2ray-geodata}
+rm -rf feeds/packages/net/{chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust}
+rm -rf feeds/packages/net/{shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
+rm -rf feeds/packages/net/{dns2socks-rust,dns2tcp,dnsproxy,gn,redsocks2,shadow-tls,trojan,v2ray-core}
+#rm -rf feeds/packages/utils/v2dat
 #find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 #find ./ | grep Makefile | grep mosdns | xargs rm -f
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-git clone https://github.com/sbwml/luci-app-mosdns -b v5-lua package/mosdns
 
-git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
-git clone --depth 1 -b lua https://github.com/sbwml/luci-app-alist.git package/alist
-git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+
+git clone --depth 1 -b lua https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
+#git clone --depth 1 -b lua https://github.com/sbwml/luci-app-alist.git package/alist
+#git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 git clone --depth 1 https://github.com/ophub/luci-app-amlogic package/luci-app-amlogic
 
 # iStore
