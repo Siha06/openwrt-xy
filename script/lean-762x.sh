@@ -11,8 +11,8 @@ sed -i '/shadow/d' package/lean/default-settings/files/zzz-default-settings
 sed -i 's#mirrors.tencent.com/lede#mirrors.pku.edu.cn/immortalwrt#g' package/lean/default-settings/files/zzz-default-settings
 
 #小米4a千兆版
-mv $GITHUB_WORKSPACE/patch/lean/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi target/linux/ramips/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi
-sed -i 's/14848/16064/g' target/linux/ramips/image/mt7621.mk
+# mv $GITHUB_WORKSPACE/patch/lean/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi target/linux/ramips/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi
+# sed -i 's/14848/16064/g' target/linux/ramips/image/mt7621.mk
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
@@ -46,7 +46,6 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 git clone https://github.com/sbwml/luci-app-mosdns -b v5-lua package/mosdns
 
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
-git clone --depth 1 -b lua https://github.com/sbwml/luci-app-alist.git package/alist
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 git clone --depth 1 https://github.com/ophub/luci-app-amlogic package/luci-app-amlogic
 
