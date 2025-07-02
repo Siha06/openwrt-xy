@@ -23,12 +23,13 @@ sed -i '/smpackage/d' /etc/opkg/distfeeds.conf
 sed -i '/kwrt/d' /etc/opkg/distfeeds.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/immortalimmortalwrt#g' /etc/opkg/distfeeds.conf
 echo > /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_base https://mirrors.pku.edu.cn/openwrt/releases/24.10.1/packages/x86_64/base' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_luci https://mirrors.pku.edu.cn/openwrt/releases/24.10.1/packages/x86_64/luci' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_packages https://mirrors.pku.edu.cn/openwrt/releases/24.10.1/packages/x86_64/packages' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_routing https://mirrors.pku.edu.cn/openwrt/releases/24.10.1/packages/x86_64/routing' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_telephony https://mirrors.pku.edu.cn/openwrt/releases/24.10.1/packages/x86_64/telephony' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_others https://mirrors.pku.edu.cn/openwrt/releases/24.10.1/targets/x86/64/packages' /etc/opkg/customfeeds.conf
+echo > /etc/opkg/customfeeds.conf
+sed -i '$a src/gz openwrt_base https://mirrors.pku.edu.cn/openwrt/releases/24.10.2/packages/x86_64/base' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz openwrt_luci https://mirrors.pku.edu.cn/openwrt/releases/24.10.2/packages/x86_64/luci' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz openwrt_packages https://mirrors.pku.edu.cn/openwrt/releases/24.10.2/packages/x86_64/packages' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz openwrt_routing https://mirrors.pku.edu.cn/openwrt/releases/24.10.2/packages/x86_64/routing' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz openwrt_telephony https://mirrors.pku.edu.cn/openwrt/releases/24.10.2/packages/x86_64/telephony' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz openwrt_others https://mirrors.pku.edu.cn/openwrt/releases/24.10.2/targets/x86/64/packages' /etc/opkg/customfeeds.conf
 sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/x86_64/kiddin9' /etc/opkg/customfeeds.conf
 date_version=$(date +"%Y.%m.%d")
 sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
@@ -36,10 +37,9 @@ echo "DISTRIB_REVISION='V${date_version}'" >> /etc/openwrt_release
 sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
 echo "DISTRIB_DESCRIPTION='OpenWrt '" >> /etc/openwrt_release
 
-OPENCLASH_FILE="/etc/config/openclash"
-if [ -f "$OPENCLASH_FILE" ]; then
-    mv /etc/my-clash /etc/openclash/core/clash_meta
-fi
+
+cp /etc/my-clash /etc/openclash/core/clash_meta
+
 
 
 # 统计eth接口数量，大于1个则将eth0设为wan其它网口设为lan，只有1个则设置成DHCP模式
