@@ -140,8 +140,8 @@ mv package/kz8-small/luci-app-poweroffdevice package/luci-app-poweroffdevice
 mv package/kz8-small/luci-app-pptp-server package/luci-app-pptp-server
 mv package/kz8-small/smartdns package/smartdns
 mv package/kz8-small/luci-app-smartdns package/luci-app-smartdns
-#mv package/kz8-small/luci-app-softethervpn package/luci-app-softethervpn
-mv package/kz8-small/luci-app-tailscale package/luci-app-tailscale
+# mv package/kz8-small/luci-app-softethervpn package/luci-app-softethervpn
+# mv package/kz8-small/luci-app-tailscale package/luci-app-tailscale
 mv package/kz8-small/luci-app-wolplus package/luci-app-wolplus
 mv package/kz8-small/wrtbwmon package/wrtbwmon
 mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
@@ -149,4 +149,3 @@ sed -i 's/联机用户/已连接用户/g' package/kz8-small/luci-app-onliner/po/
 rm -rf package/kz8-small
 #修复TailScale配置文件冲突
 sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
-rm -rf feeds/luci/applications/luci-app-tailscale
