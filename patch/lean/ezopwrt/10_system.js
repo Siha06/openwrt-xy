@@ -33,6 +33,16 @@ var callCPUUsage = rpc.declare({
 	method: 'getCPUUsage'
 });
 
+var callCoreInfo = rpc.declare({
+	object: 'luci',
+	method: 'getCoreInfo'
+});
+
+var callCoreTemp = rpc.declare({
+	object: 'luci',
+	method: 'getCoreTemp'
+});
+
 var callTempInfo = rpc.declare({
 	object: 'luci',
 	method: 'getTempInfo'
@@ -48,6 +58,8 @@ return baseclass.extend({
 			L.resolveDefault(callCPUBench(), {}),
 			L.resolveDefault(callCPUInfo(), {}),
 			L.resolveDefault(callCPUUsage(), {}),
+			L.resolveDefault(callCoreInfo(), {}),
+			L.resolveDefault(callCoreTemp(), {}),
 			L.resolveDefault(callTempInfo(), {}),
 			L.resolveDefault(callLuciVersion(), { revision: _('unknown version'), branch: 'LuCI' })
 		]);
@@ -59,8 +71,10 @@ return baseclass.extend({
 		    cpubench    = data[2],
 		    cpuinfo     = data[3],
 		    cpuusage    = data[4],
-		    tempinfo    = data[5],
-		    luciversion = data[6];
+		    coreinfo    = data[5],
+		    coretemp    = data[6],
+		    tempinfo    = data[7],
+		    luciversion = data[8];
 
 		luciversion = luciversion.branch + ' ' + luciversion.revision;
 
