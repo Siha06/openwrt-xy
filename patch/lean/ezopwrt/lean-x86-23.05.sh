@@ -1,7 +1,6 @@
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.10.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/luci2/bin/config_generate
-#sed -i 's/LEDE/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/LEDE/EzOpWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/LEDE/EzOpWrt/g' package/base-files/luci2/bin/config_generate
 sed -i 's/LEDE/EzOpWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
@@ -10,7 +9,8 @@ sed -i '/shadow/d' package/lean/default-settings/files/zzz-default-settings
 sed -i '/distfeeds.conf/d' package/lean/default-settings/files/zzz-default-settings
 
 git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-mv package/openclash-core/master/meta/clash-linux-amd64.tar.gz package/base-files/files/etc/clash-linux-amd64.tar.gz
+tar -zxf package/openclash-core/master/meta/clash-linux-amd64.tar.gz -C package/base-files/files/etc/
+mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
 rm -rf package/openclash-core
 
 mv $GITHUB_WORKSPACE/patch/lean/ezopwrt/soc-status feeds/luci/modules/luci-base/root/sbin/soc-status
@@ -110,8 +110,8 @@ rm -rf feeds/luci/applications/luci-app-softether
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
-mv package/kz8-small/alist package/alist
-mv package/kz8-small/luci-app-alist package/luci-app-alist
+#mv package/kz8-small/alist package/alist
+#mv package/kz8-small/luci-app-alist package/luci-app-alist
 #mv package/kz8-small/aria2 package/aria2
 #mv package/kz8-small/ariang package/ariang
 #mv package/kz8-small/luci-app-aria2 package/luci-app-aria2
@@ -141,8 +141,12 @@ mv package/kz8-small/luci-app-pptp-server package/luci-app-pptp-server
 mv package/kz8-small/smartdns package/smartdns
 mv package/kz8-small/luci-app-smartdns package/luci-app-smartdns
 #mv package/kz8-small/luci-app-softethervpn package/luci-app-softethervpn
+mv package/kz8-small/luci-app-tailscale package/luci-app-tailscale
 mv package/kz8-small/luci-app-wolplus package/luci-app-wolplus
 mv package/kz8-small/wrtbwmon package/wrtbwmon
 mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 sed -i 's/联机用户/已连接用户/g' package/kz8-small/luci-app-onliner/po/zh-cn/onliner.po
 rm -rf package/kz8-small
+#修复TailScale配置文件冲突
+sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
+rm -rf feeds/luci/applications/luci-app-tailscale
