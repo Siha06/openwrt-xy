@@ -13,8 +13,8 @@ sed -i '/core/d' /etc/opkg/distfeeds.conf
 sed -i '/smpackage/d' /etc/opkg/distfeeds.conf
 sed -i '/kwrt/d' /etc/opkg/distfeeds.conf
 sed -i '/luci/d' /etc/opkg/distfeeds.conf
-#sed -i '$a src/gz openwrt_luci https://mirrors.pku.edu.cn/immortalwrt/releases/18.06-k5.4-SNAPSHOT/packages/mipsel_24kc/luci' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_luci https://mirrors.pku.edu.cn/immortalwrt/releases/18.06-k5.4-SNAPSHOT/packages/aarch64_cortex-a53/luci' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz openwrt_luci https://mirrors.pku.edu.cn/immortalwrt/releases/18.06-k5.4-SNAPSHOT/packages/mipsel_24kc/luci' /etc/opkg/distfeeds.conf
+#sed -i '$a src/gz openwrt_luci https://mirrors.pku.edu.cn/immortalwrt/releases/18.06-k5.4-SNAPSHOT/packages/aarch64_cortex-a53/luci' /etc/opkg/distfeeds.conf
 
 date_version=$(date +"%Y.%m.%d")
 sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
@@ -22,23 +22,22 @@ echo "DISTRIB_REVISION='V${date_version}'" >> /etc/openwrt_release
 sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
 echo "DISTRIB_DESCRIPTION='OpenWrt  '" >> /etc/openwrt_release
 
-OPENCLASH_FILE="/etc/config/openclash"
-if [ -f "$OPENCLASH_FILE" ]; then
-    mv /etc/my-clash /etc/openclash/core/clash_meta
-fi
+cp /etc/my-clash /etc/openclash/core/clash_meta
+
 
 #mv /etc/my-adgh.yaml /etc/AdGuardHome.yaml
 #mkdir /root/diy
 #mv /etc/adg.tar.gz /root/diy/adg.tar.gz
 #sysupgrade --restore-backup /root/diy/adg.tar.gz
 
-uci set dhcp.lan.ignore=1
-uci set network.lan.proto='dhcp'
-uci commit dhcp
-uci commit network
-uci set luci.main.mediaurlbase=/luci-static/design
-uci commit luci
-uci commit
+sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
+sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
+uci set wireless.default_radio0.ssid=TIKTOK-2.4G
+uci set wireless.default_radio1.ssid=TIKTOK-5G
+uci set wireless.default_radio0.encryption=psk2+ccmp
+uci set wireless.default_radio1.encryption=psk2+ccmp
+uci set wireless.default_radio0.key=password
+uci set wireless.default_radio1.key=password
+uci commit wireless
 /etc/init.d/network restart
-
 exit 0
