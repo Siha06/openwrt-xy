@@ -8,7 +8,7 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede.git
   REPO_BRANCH: master
   CONFIG_FILE: config/lean-mt7620
-  DIY_SCRIPT: script/lean.sh
+  DIY_SCRIPT: script/lean-mini.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
@@ -83,7 +83,6 @@ jobs:
 
     - name: Install Feeds(安装feeds)
       run: |
-        mv $GITHUB_WORKSPACE/patch/lean/feeds.conf.default $OPENWRT_PATH/feeds.conf.default
         cd $OPENWRT_PATH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
