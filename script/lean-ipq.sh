@@ -6,8 +6,8 @@ sed -i 's/LEDE/OpenWrt/g' package/base-files/luci2/bin/config_generate
 sed -i 's/LEDE/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
-mv $GITHUB_WORKSPACE/patch/lean/199-ipq-wifi package/base-files/files/etc/uci-defaults/zz-ipq
-# mv $GITHUB_WORKSPACE/patch/lean/199-ipq-nowifi package/base-files/files/etc/uci-defaults/zz-ipq
+# mv $GITHUB_WORKSPACE/patch/lean/199-ipq-wifi package/base-files/files/etc/uci-defaults/zz-ipq
+mv $GITHUB_WORKSPACE/patch/lean/199-ipq-nowifi package/base-files/files/etc/uci-defaults/zz-ipq
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
