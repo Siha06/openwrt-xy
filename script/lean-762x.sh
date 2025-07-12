@@ -28,10 +28,10 @@ git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 24.x feeds/
 #删除自带的老旧依赖，ssr-plus，passwall
 rm -rf feeds/packages/net/{chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev}
 rm -rf feeds/packages/net/{simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
-#rm -rf feeds/packages/net/{dns2socks-rust,dns2tcp,dnsproxy,gn,redsocks2,shadow-tls,trojan,v2ray-core}
+rm -rf feeds/packages/net/{dns2socks-rust,dns2tcp,dnsproxy,gn,redsocks2,shadow-tls,trojan,v2ray-core}
 #rm -rf feeds/packages/devel/gn
 #rm -rf feeds/packages/utils/v2dat
-rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-openclash,luci-app-mosdns}
+rm -rf feeds/luci/applications/{luci-app-bypass，luci-app-passwall,luci-app-passwall2,luci-app-ssr-plus,luci-app-openclash,luci-app-mosdns}
 git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 sed -i 's/ShadowSocksR Plus+/Hello World/g' package/helloworld/luci-app-ssr-plus/po/zh_Hans/ssr-plus.po
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
@@ -48,7 +48,6 @@ git clone https://github.com/sbwml/luci-app-mosdns -b v5-lua package/mosdns
 
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
-git clone --depth 1 https://github.com/ophub/luci-app-amlogic package/luci-app-amlogic
 
 # iStore
 git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
@@ -69,4 +68,9 @@ rm -rf feeds/packages/net/adguardhome
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
+mv package/kz8-small/luci-app-bypass package/luci-app-bypass
+mv package/kz8-small/luci-app-easymesh package/luci-app-easymesh
+mv package/kz8-small/luci-app-eqosplus package/luci-app-eqosplus
 rm -rf package/kz8-small
+#修复TailScale配置文件冲突
+sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
