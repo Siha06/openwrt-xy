@@ -62,8 +62,8 @@ rm -rf package/nas-packages/network
 #sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
 
 rm -rf feeds/luci/themes/luci-theme-argon
-#git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
-git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
+git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
+#git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
 
 rm -rf feeds/packages/net/adguardhome
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
@@ -74,4 +74,4 @@ mv package/kz8-small/luci-app-easymesh package/luci-app-easymesh
 mv package/kz8-small/luci-app-eqosplus package/luci-app-eqosplus
 rm -rf package/kz8-small
 #修复TailScale配置文件冲突
-sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
+#sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
