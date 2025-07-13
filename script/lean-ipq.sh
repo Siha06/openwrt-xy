@@ -1,13 +1,16 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/luci2/bin/config_generate
-sed -i 's/LEDE/OpenWrt/g' package/base-files/files/bin/config_generate
-sed -i 's/LEDE/OpenWrt/g' package/base-files/luci2/bin/config_generate
-sed -i 's/LEDE/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+#sed -i 's/LEDE/OpenWrt/g' package/base-files/files/bin/config_generate
+sed -i 's/LEDE/iStoreOS/g' package/base-files/files/bin/config_generate
+sed -i 's/LEDE/iStoreOS/g' package/base-files/luci2/bin/config_generate
+sed -i 's/LEDE/iStoreOS/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
-# mv $GITHUB_WORKSPACE/patch/lean/199-ipq-wifi package/base-files/files/etc/uci-defaults/zz-ipq
-mv $GITHUB_WORKSPACE/patch/lean/199-ipq-nowifi package/base-files/files/etc/uci-defaults/zz-ipq
+mv $GITHUB_WORKSPACE/patch/lean/199-ipq-wifi package/base-files/files/etc/uci-defaults/zz-ipq
+# mv $GITHUB_WORKSPACE/patch/lean/199-ipq-nowifi package/base-files/files/etc/uci-defaults/zz-ipq
+
+sed -i 's/=6.12/=6.6/g' target/linux/qualcommax/Makefile
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
@@ -31,7 +34,6 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/l
 rm -rf feeds/packages/net/{alist,mosdns}
 rm -rf feeds/luci/applications/{luci-app-alist,luci-app-mosdns}
 git clone --depth 1 -b v5-lua https://github.com/sbwml/luci-app-mosdns package/mosdns
-# git clone --depth 1 -b lua https://github.com/sbwml/luci-app-alist.git package/alist
 
 # iStore
 git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
