@@ -109,6 +109,16 @@ jobs:
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
 
+    - name: edit md5（编辑内核值）
+      run: |
+        rm -rf $OPENWRT_PATH/.vermagic
+        mv $GITHUB_WORKSPACE/vm/lean-ipq60xx $OPENWRT_PATH/vermagic
+        cd $OPENWRT_PATH
+        sed -i '123d' include/kernel-defaults.mk
+        sed -i '123i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '29d' package/kernel/linux/Makefile
+        sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
+
     - name: Download DL Package
       run: |
         [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRT_PATH/.config
