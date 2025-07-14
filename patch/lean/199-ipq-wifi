@@ -1,5 +1,6 @@
 #!/bin/sh
-
+sed -i 's/6.6.95-1-9349d82c8abbbb4db48c2779202c2b50/6.6.95~1-r1/g' /usr/lib/opkg/status
+sed -i 's/6.6.95-1/6.6.95-r1/g' /usr/lib/opkg/status
 #uci set network.lan.ipaddr=192.168.2.2
 #uci set network.lan.gateway=192.168.2.1
 #uci set network.lan.dns=192.168.2.1
