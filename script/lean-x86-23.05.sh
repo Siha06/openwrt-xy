@@ -50,42 +50,18 @@ git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspee
 git clone --depth 1 -b js https://github.com/sirpdboy/luci-theme-kucat.git package/luci-theme-kucat
 mv $GITHUB_WORKSPACE/patch/lean/ezopwrt/netwizard.lua package/luci-app-netwizard/luci-app-netwizard/luasrc/controller/netwizard.lua
 
-#rm -rf feeds/luci/applications/luci-app-socat
-#git clone --depth 1 https://github.com/sirpdboy/sirpdboy-package.git package/sirpdboy-package
-#mv package/sirpdboy-package/luci-app-pppoe-server package/luci-app-pppoe-server
-#mv package/sirpdboy-package/luci-app-socat package/luci-app-socat
-#rm -rf package/sirpdboy-package
 
+#git clone --depth 1 -b master https://github.com/coolsnowwolf/luci.git package/ledeluci
+#mv package/ledeluci/applications/luci-app-openvpn-server package/luci-app-openvpn-server
+#sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-openvpn-server/Makefile
+#mv package/ledeluci/applications/luci-app-adbyby-plus package/luci-app-adbyby-plus
+#sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-adbyby-plus/Makefile
+#rm -rf package/ledeluci
 
-rm -rf feeds/packages/utils/docker
-rm -rf feeds/packages/utils/dockerd
-rm -rf feeds/packages/utils/containerd
-rm -rf feeds/packages/utils/runc
-git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/packages package/imm24pkg
-mv package/imm24pkg/utils/containerd feeds/packages/utils/containerd
-mv package/imm24pkg/utils/docker feeds/packages/utils/docker
-mv package/imm24pkg/utils/dockerd feeds/packages/utils/dockerd
-mv package/imm24pkg/utils/runc feeds/packages/utils/runc
-rm -rf package/imm24pkg
-git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci.git package/imm23luci
-mv package/imm23luci/applications/luci-app-softethervpn package/luci-app-softethervpn
-sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-softethervpn/Makefile
-rm -rf package/imm23luci
-git clone --depth 1 -b openwrt-24.10 https://github.com/immortalwrt/luci.git package/imm24luci
-mv package/imm24luci/applications/luci-app-pppoe-server package/luci-app-pppoe-server
-sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-pppoe-server/Makefile
-rm -rf package/imm24luci
-git clone --depth 1 -b master https://github.com/coolsnowwolf/luci.git package/ledeluci
-mv package/ledeluci/applications/luci-app-openvpn-server package/luci-app-openvpn-server
-sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-openvpn-server/Makefile
-mv package/ledeluci/applications/luci-app-adbyby-plus package/luci-app-adbyby-plus
-sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-adbyby-plus/Makefile
-rm -rf package/ledeluci
-
-rm -rf feeds/luci/applications/luci-app-ipsec-server
-git clone --depth 1 https://github.com/kiddin9/kwrt-packages.git package/kwrt-packages
-mv package/kwrt-packages/luci-app-ipsec-server package/luci-app-ipsec-server
-rm -rf package/kwrt-packages
+#rm -rf feeds/luci/applications/luci-app-ipsec-server
+#git clone --depth 1 https://github.com/kiddin9/kwrt-packages.git package/kwrt-packages
+#mv package/kwrt-packages/luci-app-ipsec-server package/luci-app-ipsec-server
+#rm -rf package/kwrt-packages
 
 rm -rf feeds/packages/net/adguardhome
 rm -rf feeds/packages/net/alist
