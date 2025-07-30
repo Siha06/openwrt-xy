@@ -7,7 +7,7 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede.git
   REPO_BRANCH: master
-  CONFIG_FILE: patch/lean/ezopwrt/lean-x86-23.05
+  CONFIG_FILE: patch/lean/ezopwrt/lean-x86-23.05-2
   DIY_SCRIPT: patch/lean/ezopwrt/lean-x86-23.05.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
