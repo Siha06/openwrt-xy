@@ -16,6 +16,7 @@ fi
 
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
+git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth 1 https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
@@ -34,7 +35,6 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 
 git clone --depth 1 -b lua https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
-#git clone --depth 1 -b lua https://github.com/sbwml/luci-app-alist.git package/alist
 #git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 git clone --depth 1 https://github.com/ophub/luci-app-amlogic package/luci-app-amlogic
 
