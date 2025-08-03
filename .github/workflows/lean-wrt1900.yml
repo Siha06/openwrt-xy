@@ -96,7 +96,7 @@ jobs:
       run: |
         cd $OPENWRT_PATH
         mv $GITHUB_WORKSPACE/patch/lean/feeds.conf.default feeds.conf.default
-        git tag
+        git checkout 20230609
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
