@@ -100,7 +100,7 @@ jobs:
         ./scripts/feeds install -a
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        cd feeds/luci/luci-app-turboacc
+        cd feeds/luci/applications/luci-app-turboacc
         git checkout ddbc5ea
 
     - name: Load Custom Script(加载自定义脚本)
