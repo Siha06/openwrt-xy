@@ -32,7 +32,7 @@ rm -rf feeds/packages/net/{dns2socks-rust,dns2tcp,dnsproxy,gn,redsocks2,shadow-t
 #rm -rf feeds/packages/utils/v2dat
 rm -rf feeds/luci/applications/{luci-app-bypass，luci-app-passwall,luci-app-passwall2,luci-app-ssr-plus,luci-app-openclash,luci-app-mosdns}
 git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
-sed -i 's/ShadowSocksR Plus+/Hello World/g' package/helloworld/luci-app-ssr-plus/po/zh_Hans/ssr-plus.po
+#sed -i 's/ShadowSocksR Plus+/Hello World/g' package/helloworld/luci-app-ssr-plus/po/zh_Hans/ssr-plus.po
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
