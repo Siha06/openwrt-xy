@@ -62,8 +62,8 @@ mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/luci-app-bypass package/luci-app-bypass
 mv package/kz8-small/luci-app-easymesh package/luci-app-easymesh
 mv package/kz8-small/luci-app-eqosplus package/luci-app-eqosplus
-mv package/kz8-small/adguardhome package/tailscale
-mv package/kz8-small/luci-app-adguardhome package/luci-app-tailscale
+mv package/kz8-small/tailscale package/tailscale
+mv package/kz8-small/luci-app-tailscale package/luci-app-tailscale
 rm -rf package/kz8-small
 #修复TailScale配置文件冲突
 #sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' package/tailscale/Makefile
