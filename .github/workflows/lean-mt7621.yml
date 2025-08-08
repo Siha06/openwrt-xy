@@ -7,7 +7,7 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede.git
   REPO_BRANCH: master
-  CONFIG_FILE: config/lean-mt7621-2
+  CONFIG_FILE: config/lean-mt7621
   DIY_SCRIPT: script/lean-762x.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
@@ -96,6 +96,8 @@ jobs:
       run: |
         mv $GITHUB_WORKSPACE/patch/lean/feeds.conf.default $OPENWRT_PATH/feeds.conf.default
         cd $OPENWRT_PATH
+        sed -i '1i src-git luci_app_ssrp https://github.com/fw876/helloworld.git' feeds.conf.default
+        sed -i '1i src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git' feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
