@@ -24,34 +24,24 @@ fi
 # 添加kenzok8_small插件库, 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 rm -rf feeds/packages/lang/golang
 git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
-#删除自带的老旧依赖，ssr-plus，passwall
-rm -rf feeds/packages/net/{chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev}
-rm -rf feeds/packages/net/{simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
-rm -rf feeds/packages/net/{dns2socks-rust,dns2tcp,dnsproxy,gn,redsocks2,shadow-tls,trojan,v2ray-core}
-#rm -rf feeds/packages/devel/gn
-#rm -rf feeds/packages/utils/v2dat
+#删除自带的旧插件
+rm -rf feeds/packages/net/{mosdns,v2ray-geodata}
 rm -rf feeds/luci/applications/{luci-app-bypass，luci-app-passwall,luci-app-passwall2,luci-app-ssr-plus,luci-app-openclash,luci-app-mosdns}
-git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
-#sed -i 's/ShadowSocksR Plus+/Hello World/g' package/helloworld/luci-app-ssr-plus/po/zh_Hans/ssr-plus.po
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
 git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
 
-rm -rf feeds/packages/net/v2ray-geodata
-rm -rf feeds/packages/net/mosdns
-#find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
-#find ./ | grep Makefile | grep mosdns | xargs rm -f
+
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 git clone https://github.com/sbwml/luci-app-mosdns -b v5-lua package/mosdns
 
-git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
+git clone --depth 1 -b lua https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
 # iStore
-git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
-git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
-git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
+git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
+git clone --depth 1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
+git clone --depth 1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
 mv package/nas-packages/network/services/* package/nas-packages/
 rm -rf package/nas-packages/network
 
@@ -61,16 +51,20 @@ rm -rf package/nas-packages/network
 #sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
 
 rm -rf feeds/luci/themes/luci-theme-argon
+rm -rf feeds/luci/applications/luci-app-argon-config
 git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
-#git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
+git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
-rm -rf feeds/packages/net/adguardhome
+rm -rf feeds/packages/net/{adguardhome,tailscale}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/luci-app-bypass package/luci-app-bypass
 mv package/kz8-small/luci-app-easymesh package/luci-app-easymesh
 mv package/kz8-small/luci-app-eqosplus package/luci-app-eqosplus
+mv package/kz8-small/adguardhome package/tailscale
+mv package/kz8-small/luci-app-adguardhome package/luci-app-tailscale
 rm -rf package/kz8-small
 #修复TailScale配置文件冲突
-#sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
+#sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' package/tailscale/Makefile
+sed -i '/\/files/d' package/tailscale/Makefile
