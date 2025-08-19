@@ -58,6 +58,8 @@ git clone --depth 1 https://github.com/wiwizcom/WiFiPortal.git package/WiFiPorta
 cp -r package/WiFiPortal/dcc2-wiwiz package/
 cp -r package/WiFiPortal/eqos-master-wiwiz package/
 cp -r package/WiFiPortal/wifidog-wiwiz package/
+rm -rf feeds/packages/net/eqos
+rm -rf feeds/luci/applications/luci-app-eqos
 
 rm -rf feeds/packages/net/{adguardhome,tailscale}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
