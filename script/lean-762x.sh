@@ -54,6 +54,10 @@ rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-argon-config
 git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
 git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
+git clone --depth 1 https://github.com/wiwizcom/WiFiPortal.git package/WiFiPortal
+cp -r package/WiFiPortal/dcc2-wiwiz package/
+cp -r package/WiFiPortal/eqos-master-wiwiz package/
+cp -r package/WiFiPortal/wifidog-wiwiz package/
 
 rm -rf feeds/packages/net/{adguardhome,tailscale}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
