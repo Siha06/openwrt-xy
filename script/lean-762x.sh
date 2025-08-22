@@ -10,6 +10,8 @@ sed -i '/openwrt_release/d' package/lean/default-settings/files/zzz-default-sett
 sed -i '/shadow/d' package/lean/default-settings/files/zzz-default-settings
 sed -i 's#mirrors.tencent.com/lede#mirrors.pku.edu.cn/immortalwrt#g' package/lean/default-settings/files/zzz-default-settings
 
+mv $GITHUB_WORKSPACE/patch/lean/patch/fstools-Makefile package/system/fstools/Makefile
+
 #小米4a千兆版
 # mv $GITHUB_WORKSPACE/patch/lean/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi target/linux/ramips/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi
 # sed -i 's/14848/16064/g' target/linux/ramips/image/mt7621.mk
