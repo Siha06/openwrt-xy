@@ -181,7 +181,8 @@ detect_mac80211() {
 			set wireless.default_radio${devidx}.device=radio${devidx}
 			set wireless.default_radio${devidx}.network=lan
 			set wireless.default_radio${devidx}.mode=ap
-			set wireless.default_radio${devidx}.ssid=TikTok
+			set wireless.default_radio0.ssid=TikTok-2.4G
+			set wireless.default_radio1.ssid=TikTok-5G
 			set wireless.default_radio${devidx}.encryption=psk2+ccmp
 			set wireless.default_radio${devidx}.key=password
 EOF
