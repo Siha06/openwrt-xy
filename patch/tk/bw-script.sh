@@ -4,10 +4,14 @@ sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/luci2/bin/config_generat
 sed -i 's/LEDE/TikTok/g' package/base-files/files/bin/config_generate
 sed -i 's/LEDE/TikTok/g' package/base-files/luci2/bin/config_generate
 sed -i 's/LEDE/TikTok/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-mv $GITHUB_WORKSPACE/patch/tk/bw-diy.sh package/base-files/files/etc/uci-defaults/zz-diy
-mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 sed -i '/openwrt_release/d' package/lean/default-settings/files/zzz-default-settings
 sed -i 's#mirrors.tencent.com/lede#mirrors.pku.edu.cn/immortalwrt#g' package/lean/default-settings/files/zzz-default-settings
+mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
+
+mv $GITHUB_WORKSPACE/patch/tk/mac80211.sh package/kernel/mac80211/files/lib/wifi/mac80211.sh
+mv $GITHUB_WORKSPACE/patch/tk/bw-diy.sh package/base-files/files/etc/uci-defaults/zz-diy
+mv $GITHUB_WORKSPACE/patch/tk/bw-index.htm package/base-files/files/etc/bw-index.htm
+
 
 mv $GITHUB_WORKSPACE/patch/lean/patch/fstools-Makefile package/system/fstools/Makefile
 
@@ -39,28 +43,10 @@ git clone --depth 1 https://github.com/sbwml/luci-app-mosdns -b v5-lua package/m
 git clone --depth 1 -b lua https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
-# iStore
-git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
-git clone --depth 1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
-git clone --depth 1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
-mv package/nas-packages/network/services/* package/nas-packages/
-rm -rf package/nas-packages/network
-
-#下载5g模块
-#git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
-#sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
-#sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
-
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-argon-config
 git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
 git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
-git clone --depth 1 https://github.com/wiwizcom/WiFiPortal.git package/WiFiPortal
-cp -r package/WiFiPortal/dcc2-wiwiz package/
-cp -r package/WiFiPortal/eqos-master-wiwiz package/
-cp -r package/WiFiPortal/wifidog-wiwiz package/
-rm -rf feeds/packages/net/eqos
-rm -rf feeds/luci/applications/luci-app-eqos
 
 rm -rf feeds/packages/net/{adguardhome,tailscale}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
