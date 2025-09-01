@@ -8,7 +8,7 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede.git
   REPO_BRANCH: master
-  CONFIG_FILE: config/lean-ipq-nowifi
+  CONFIG_FILE: config/lean-ipq-wifi
   DIY_SCRIPT: script/lean-ipq.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
@@ -20,7 +20,7 @@ env:
 
 jobs:
   Build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-lastest
 
     steps:
     - name: Check Server Performance(检查服务器性能)
