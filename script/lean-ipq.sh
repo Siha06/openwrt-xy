@@ -2,15 +2,14 @@ sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_genera
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/luci2/bin/config_generate
 #sed -i 's/LEDE/OpenWrt/g' package/base-files/files/bin/config_generate
-sed -i 's/LEDE/iStoreOS/g' package/base-files/files/bin/config_generate
-sed -i 's/LEDE/iStoreOS/g' package/base-files/luci2/bin/config_generate
-sed -i 's/LEDE/iStoreOS/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/LEDE/OpenWrt/g' package/base-files/luci2/bin/config_generate
+sed -i 's/LEDE/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/lean/199-ipq-wifi package/base-files/files/etc/uci-defaults/zz-ipq
 # mv $GITHUB_WORKSPACE/patch/lean/199-ipq-nowifi package/base-files/files/etc/uci-defaults/zz-ipq
 
-sed -i 's/=6.12/=6.6/g' target/linux/qualcommax/Makefile
+#sed -i 's/=6.12/=6.6/g' target/linux/qualcommax/Makefile
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
@@ -37,7 +36,7 @@ mv package/nas-packages/network/services/* package/nas-packages/
 rm -rf package/nas-packages/network
 
 #ua2f
-#git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
+git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
 #git clone https://github.com/Zxilly/UA2F.git package/UA2F
 #git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
 #rm -rf feeds/packages/net/ua2f
