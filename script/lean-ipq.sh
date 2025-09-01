@@ -9,7 +9,7 @@ mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/lean/199-ipq-wifi package/base-files/files/etc/uci-defaults/zz-ipq
 # mv $GITHUB_WORKSPACE/patch/lean/199-ipq-nowifi package/base-files/files/etc/uci-defaults/zz-ipq
 
-#sed -i 's/=6.12/=6.6/g' target/linux/qualcommax/Makefile
+sed -i 's/=6.12/=6.6/g' target/linux/qualcommax/Makefile
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
@@ -18,7 +18,7 @@ if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     rm -rf package/openclash-core
 fi
 rm -rf feeds/packages/lang/golang
-git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
+git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-passwall2,luci-app-openclash}
 git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
