@@ -1,6 +1,6 @@
 #!/bin/sh
-sed -i 's/6.6.95-1-9349d82c8abbbb4db48c2779202c2b50/6.6.95~1-r1/g' /usr/lib/opkg/status
-sed -i 's/6.6.95-1/6.6.95-r1/g' /usr/lib/opkg/status
+#sed -i 's/6.6.95-1-9349d82c8abbbb4db48c2779202c2b50/6.6.95~1-r1/g' /usr/lib/opkg/status
+#sed -i 's/6.6.95-1/6.6.95-r1/g' /usr/lib/opkg/status
 #uci set network.lan.ipaddr=192.168.2.2
 #uci set network.lan.gateway=192.168.2.1
 #uci set network.lan.dns=192.168.2.1
@@ -24,7 +24,7 @@ uci commit wireless
 uci del dhcp.lan.ra
 uci del dhcp.lan.dhcpv6
 uci commit dhcp
-uci del network.wan6
+# uci del network.wan6
 uci del network.lan.ip6assign
 uci del network.globals.ula_prefix
 uci commit network
@@ -46,15 +46,15 @@ sed -i '/luci/d' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz openwrt_luci https://mirrors.pku.edu.cn/immortalwrt/releases/18.06-k5.4-SNAPSHOT/packages/aarch64_cortex-a53/luci' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz others https://mirrors.pku.edu.cn/immortalwrt/releases/24.10-SNAPSHOT/targets/qualcommax/ipq807x/packages' /etc/opkg/customfeeds.conf
 
-echo > /etc/opkg/distfeeds.conf
-sed -i '$a src/gz kmods https://dl.openwrt.ai/releases/24.10/targets/qualcommax/ipq60xx/6.6.95' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_core https://mirrors.pku.edu.cn/immortalwrt/releases/24.10-SNAPSHOT/targets/qualcommax/ipq807x/packages' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_base https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/packages/aarch64_cortex-a53/base' /etc/opkg/distfeeds.conf
-# sed -i '$a src/gz openwrt_luci https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/packages/aarch64_cortex-a53/luci' /etc/opkg/distfeeds.conf
-sed -i '$a #src/gz openwrt_luci https://mirrors.pku.edu.cn/immortalwrt/releases/18.06-k5.4-SNAPSHOT/packages/aarch64_cortex-a53/luci' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_packages https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/packages/aarch64_cortex-a53/packages' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_routing https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/packages/aarch64_cortex-a53/routing' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_telephony https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/packages/aarch64_cortex-a53/telephony' /etc/opkg/distfeeds.conf
+#echo > /etc/opkg/distfeeds.conf
+#sed -i '$a src/gz kmods https://dl.openwrt.ai/releases/24.10/targets/qualcommax/ipq60xx/6.6.95' /etc/opkg/distfeeds.conf
+#sed -i '$a src/gz openwrt_core https://mirrors.pku.edu.cn/immortalwrt/releases/24.10-SNAPSHOT/targets/qualcommax/ipq807x/packages' /etc/opkg/distfeeds.conf
+#sed -i '$a src/gz openwrt_base https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/packages/aarch64_cortex-a53/base' /etc/opkg/distfeeds.conf
+#sed -i '$a src/gz openwrt_luci https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/packages/aarch64_cortex-a53/luci' /etc/opkg/distfeeds.conf
+#sed -i '$a #src/gz openwrt_luci https://mirrors.pku.edu.cn/immortalwrt/releases/18.06-k5.4-SNAPSHOT/packages/aarch64_cortex-a53/luci' /etc/opkg/distfeeds.conf
+#sed -i '$a src/gz openwrt_packages https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/packages/aarch64_cortex-a53/packages' /etc/opkg/distfeeds.conf
+#sed -i '$a src/gz openwrt_routing https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/packages/aarch64_cortex-a53/routing' /etc/opkg/distfeeds.conf
+#sed -i '$a src/gz openwrt_telephony https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/packages/aarch64_cortex-a53/telephony' /etc/opkg/distfeeds.conf
 
 date_version=$(date +"%Y.%m.%d")
 sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
