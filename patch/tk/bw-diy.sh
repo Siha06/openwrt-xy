@@ -13,6 +13,7 @@ sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 
 mv /etc/bw-index.htm /usr/lib/lua/luci/view/admin_status/index.htm
 
+sed -i '/helloworld/d' /etc/opkg/distfeeds.conf
 sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -i '/core/d' /etc/opkg/distfeeds.conf
 
