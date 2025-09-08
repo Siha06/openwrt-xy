@@ -17,12 +17,7 @@ sed -i '/helloworld/d' /etc/opkg/distfeeds.conf
 sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -i '/core/d' /etc/opkg/distfeeds.conf
 
-uci set wireless.default_radio0.ssid=OpenWrt-2.4G
-uci set wireless.default_radio1.ssid=OpenWrt-5G
-uci set wireless.default_radio0.encryption=psk2+ccmp
-uci set wireless.default_radio1.encryption=psk2+ccmp
-uci set wireless.default_radio0.key=password
-uci set wireless.default_radio1.key=password
+
 /etc/init.d/network restart
 
 exit 0
