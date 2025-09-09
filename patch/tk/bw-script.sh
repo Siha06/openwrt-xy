@@ -48,6 +48,13 @@ rm -rf feeds/luci/applications/luci-app-argon-config
 git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
 git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
+# iStore
+git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
+git clone --depth 1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
+git clone --depth 1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
+mv package/nas-packages/network/services/* package/nas-packages/
+rm -rf package/nas-packages/network
+
 rm -rf feeds/packages/net/{adguardhome,tailscale}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/adguardhome package/adguardhome
