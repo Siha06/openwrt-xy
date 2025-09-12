@@ -1,6 +1,6 @@
-sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/luci2/bin/config_generate
+sed -i 's/192.168.1.1/10.3.2.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+sed -i 's/192.168.1.1/10.3.2.1/g' package/base-files/luci2/bin/config_generate
 sed -i 's/LEDE/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/LEDE/OpenWrt/g' package/base-files/luci2/bin/config_generate
 sed -i 's/LEDE/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
@@ -19,19 +19,13 @@ if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     rm -rf package/openclash-core
 fi
 
-git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
-
-rm -rf feeds/smpackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd*,miniupnpd-iptables,wireless-regdb,luci-theme-argon}
-rm -rf feeds/luci/applications/{luci-app-alist,luci-app-adguardhome,luci-app-mosdns,luci-app-smartdns}
-rm -rf feeds/packages/net/{chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev}
-rm -rf feeds/packages/net/{simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
-rm -rf feeds/packages/net/{mosdns,dns2socks-rust,dns2tcp,dnsproxy,gn,redsocks2,shadow-tls,trojan,v2ray-core}
-#rm -rf feeds/packages/utils/v2dat
+#git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
-git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
+git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
+rm -rf feeds/packages/net/{mosdns,v2ray-geodata}
+rm -rf feeds/luci/applications/{luci-app-bypass，luci-app-passwall,luci-app-passwall2,luci-app-ssr-plus,luci-app-openclash,luci-app-mosdns}
+rm -rf feeds/luci/applications/{luci-app-alist,luci-app-adguardhome,luci-app-mosdns,luci-app-smartdns}
 git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
 git clone -b v5-lua https://github.com/sbwml/luci-app-mosdns package/mosdns
@@ -56,9 +50,8 @@ mv package/kz8-small/luci-app-bypass package/luci-app-bypass
 rm -rf package/kz8-small
 
 rm -rf feeds/luci/themes/luci-theme-argon
-git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
-git clone -b lua --depth 1 https://github.com/sbwml/luci-app-alist.git package/alist
-git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
+git clone --depth 1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
+git clone --depth 1 -b lua https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
 git clone --depth 1 https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
 
 git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
