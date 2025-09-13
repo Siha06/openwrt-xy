@@ -35,8 +35,8 @@ cp /etc/my-clash /etc/openclash/core/clash_meta
 #mv /etc/adg.tar.gz /root/diy/adg.tar.gz
 #sysupgrade --restore-backup /root/diy/adg.tar.gz
 
-sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
-sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
+#sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
+#sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
 uci set wireless.default_radio0.ssid=OpenWrt-2.4G
 uci set wireless.default_radio1.ssid=OpenWrt-5G
 uci set wireless.default_radio0.encryption=psk2+ccmp
