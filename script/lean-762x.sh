@@ -1,6 +1,6 @@
-sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/luci2/bin/config_generate
+sed -i 's/192.168.1.1/10.3.2.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/10.3.2.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+sed -i 's/192.168.1.1/10.3.2.1/g' package/base-files/luci2/bin/config_generate
 sed -i 's/LEDE/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/LEDE/OpenWrt/g' package/base-files/luci2/bin/config_generate
 sed -i 's/LEDE/openwrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
@@ -32,13 +32,19 @@ rm -rf feeds/luci/applications/{luci-app-bypass，luci-app-passwall,luci-app-pas
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
 git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
-
-
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 git clone https://github.com/sbwml/luci-app-mosdns -b v5-lua package/mosdns
 
 git clone --depth 1 -b lua https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+
+#有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
+git clone --depth 1 https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
+git clone --depth 1 https://github.com/Zxilly/UA2F.git package/ua2f
+#git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
+#git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
+rm -rf feeds/packages/net/ua2f
+rm -rf feeds/luci/applications/luci-app-ua2f
 
 # iStore
 git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
