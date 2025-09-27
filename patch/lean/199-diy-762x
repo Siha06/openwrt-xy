@@ -11,6 +11,7 @@ uci commit
 #uci set luci.main.mediaurlbase=/luci-static/bootstrap
 #uci commit luci
 
+sed -i '/ssrp/d' /etc/opkg/distfeeds.conf
 sed -i '/helloworld/d' /etc/opkg/distfeeds.conf
 sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -i '/core/d' /etc/opkg/distfeeds.conf
