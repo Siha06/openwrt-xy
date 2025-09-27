@@ -7,7 +7,7 @@ sed -i 's/LEDE/openwrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 mv $GITHUB_WORKSPACE/patch/lean/199-diy-762x package/base-files/files/etc/uci-defaults/zz-diy
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 sed -i '/openwrt_release/d' package/lean/default-settings/files/zzz-default-settings
-sed -i '/shadow/d' package/lean/default-settings/files/zzz-default-settings
+#sed -i '/shadow/d' package/lean/default-settings/files/zzz-default-settings
 sed -i 's#mirrors.tencent.com/lede#mirrors.pku.edu.cn/immortalwrt#g' package/lean/default-settings/files/zzz-default-settings
 
 #mv $GITHUB_WORKSPACE/patch/lean/patch/fstools-Makefile package/system/fstools/Makefile
