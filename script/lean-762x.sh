@@ -1,6 +1,6 @@
-sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.5.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/luci2/bin/config_generate
+sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/luci2/bin/config_generate
 sed -i 's/LEDE/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/LEDE/OpenWrt/g' package/base-files/luci2/bin/config_generate
 sed -i 's/LEDE/openwrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
@@ -40,12 +40,12 @@ git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAp
 git clone --depth 1 https://github.com/Erope/openwrt_nezha.git package/openwrt_nezha
 
 #有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
-git clone --depth 1 https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
-git clone --depth 1 https://github.com/Zxilly/UA2F.git package/ua2f
+#git clone --depth 1 https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
+#git clone --depth 1 https://github.com/Zxilly/UA2F.git package/ua2f
 #git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
 #git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
-rm -rf feeds/packages/net/ua2f
-rm -rf feeds/luci/applications/luci-app-ua2f
+#rm -rf feeds/packages/net/ua2f
+#rm -rf feeds/luci/applications/luci-app-ua2f
 
 # iStore
 git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
@@ -61,14 +61,17 @@ rm -rf package/nas-packages/network
 
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-argon-config
-git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
+git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
-git clone --depth 1 https://github.com/wiwizcom/WiFiPortal.git package/WiFiPortal
-cp -r package/WiFiPortal/dcc2-wiwiz package/
-cp -r package/WiFiPortal/eqos-master-wiwiz package/
-cp -r package/WiFiPortal/wifidog-wiwiz package/
-rm -rf feeds/packages/net/eqos
-rm -rf feeds/luci/applications/luci-app-eqos
+mv $GITHUB_WORKSPACE/patch/xtreme-bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
+
+
+#git clone --depth 1 https://github.com/wiwizcom/WiFiPortal.git package/WiFiPortal
+#cp -r package/WiFiPortal/dcc2-wiwiz package/
+#cp -r package/WiFiPortal/eqos-master-wiwiz package/
+#cp -r package/WiFiPortal/wifidog-wiwiz package/
+#rm -rf feeds/packages/net/eqos
+#rm -rf feeds/luci/applications/luci-app-eqos
 
 rm -rf feeds/packages/net/{adguardhome,tailscale}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
