@@ -1,16 +1,16 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/luci2/bin/config_generate
-sed -i 's/LEDE/OpenWrt/g' package/base-files/files/bin/config_generate
-sed -i 's/LEDE/OpenWrt/g' package/base-files/luci2/bin/config_generate
-sed -i 's/LEDE/openwrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-mv $GITHUB_WORKSPACE/patch/lean/199-diy-762x package/base-files/files/etc/uci-defaults/zz-diy
+sed -i 's/LEDE/Xtreme_Link/g' package/base-files/files/bin/config_generate
+sed -i 's/LEDE/Xtreme_Link/g' package/base-files/luci2/bin/config_generate
+sed -i 's/LEDE/Xtreme_Link/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+mv $GITHUB_WORKSPACE/patch/xtreme/199-diy-762x package/base-files/files/etc/uci-defaults/zz-diy
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 sed -i '/openwrt_release/d' package/lean/default-settings/files/zzz-default-settings
 #sed -i '/shadow/d' package/lean/default-settings/files/zzz-default-settings
 sed -i 's#mirrors.tencent.com/lede#mirrors.pku.edu.cn/immortalwrt#g' package/lean/default-settings/files/zzz-default-settings
 
-
+mv $GITHUB_WORKSPACE/patch/xtreme/index.htm package/base-files/files/etc/xtreme-index.htm
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
