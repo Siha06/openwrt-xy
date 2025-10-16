@@ -1,5 +1,5 @@
-sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+sed -i 's/192.168.1.1/192.168.140.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.140.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/luci2/bin/config_generate
 #sed -i 's/LEDE/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/LEDE/OpenWrt/g' package/base-files/luci2/bin/config_generate
@@ -36,7 +36,7 @@ mv package/nas-packages/network/services/* package/nas-packages/
 rm -rf package/nas-packages/network
 
 #ua2f
-git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
+#git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
 #git clone https://github.com/Zxilly/UA2F.git package/UA2F
 #git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
 #rm -rf feeds/packages/net/ua2f
