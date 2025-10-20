@@ -41,7 +41,6 @@ mv package/kz8-small/lucky package/lucky
 mv package/kz8-small/luci-app-lucky package/luci-app-lucky
 mv package/kz8-small/smartdns package/smartdns
 mv package/kz8-small/luci-app-smartdns package/luci-app-smartdns
-mv package/kz8-small/homebox package/homebox
 mv package/kz8-small/luci-app-poweroffdevice package/luci-app-poweroffdevice
 rm -rf package/kz8-small
 
