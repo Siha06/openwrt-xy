@@ -7,6 +7,7 @@ sed -i 's/LEDE/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 sed -i '/shadow/d' package/lean/default-settings/files/zzz-default-settings
 sed -i '/distfeeds.conf/d' package/lean/default-settings/files/zzz-default-settings
+mv $GITHUB_WORKSPACE/patch/lean/199-x86-23.05 package/base-files/files/etc/uci-defaults/zz-diy
 
 #完全删除luci版本
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
@@ -17,26 +18,21 @@ if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
     rm -rf package/openclash-core
 fi
-mv $GITHUB_WORKSPACE/patch/lean/199-x86-23.05 package/base-files/files/etc/uci-defaults/zz-diy
 
 
+rm -rf feeds/packages/lang/golang
+git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
+rm -rf feeds/luci/applications/{luci-app-openclash,luci-app-passwall,luci-app-passwall2,luci-app-ddns-go}
 git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
-git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
+#git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/openwrt-oaf
 git clone https://github.com/sbwml/luci-app-filemanager.git package/luci-app-filemanager
 git clone --depth 1 https://github.com/gSpotx2f/luci-app-cpu-status.git package/luci-app-cpu-status
 
-rm -rf feeds/packages/lang/golang
-git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 
-rm -rf feeds/luci/themes/luci-theme-argon
-rm -rf feeds/luci/applications/luci-app-argon-config
-git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git  package/luci-app-argon-config
-git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 
 rm -rf feeds/packages/net/ddns-go
 rm -rf feeds/luci/applications/luci-app-ddns-go
@@ -44,9 +40,14 @@ sed -i 's/上网时间控制/用户管控/g' feeds/luci/applications/luci-app-ac
 git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/luci-app-advancedplus
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
 git clone --depth 1 https://github.com/sirpdboy/luci-app-taskplan.git package/luci-app-taskplan
+git clone -b js --depth 1 https://github.com/sirpdboy/luci-app-netspeedtest.git package/luci-app-netspeedtest
 git clone --depth 1 https://github.com/sirpdboy/luci-app-netwizard package/luci-app-netwizard
 git clone --depth 1 https://github.com/sirpdboy/luci-app-parentcontrol package/luci-app-parentcontrol
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
+rm -rf feeds/luci/themes/luci-theme-argon
+rm -rf feeds/luci/applications/luci-app-argon-config
+git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git  package/luci-app-argon-config
+git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone --depth 1 -b js https://github.com/sirpdboy/luci-theme-kucat.git package/luci-theme-kucat
 mv $GITHUB_WORKSPACE/patch/lean/ezopwrt/netwizard.lua package/luci-app-netwizard/luci-app-netwizard/luasrc/controller/netwizard.lua
 
@@ -64,20 +65,18 @@ mv $GITHUB_WORKSPACE/patch/lean/ezopwrt/netwizard.lua package/luci-app-netwizard
 #rm -rf package/kwrt-packages
 
 rm -rf feeds/packages/net/adguardhome
+rm -rf feeds/luci/applications/luci-app-adguardhome
 rm -rf feeds/packages/net/alist
 rm -rf feeds/luci/applications/luci-app-alist
 #rm -rf feeds/packages/net/aria2
 #rm -rf feeds/packages/net/ariang
 #rm -rf feeds/luci/applications/luci-app-aria2
-rm -rf feeds/packages/net/lucky
 rm -rf feeds/luci/applications/luci-app-dockerman
+rm -rf feeds/packages/net/lucky
 rm -rf feeds/luci/applications/luci-app-lucky
 rm -rf feeds/packages/net/mosdns
 rm -rf feeds/luci/applications/luci-app-mosdns
-rm -rf feeds/luci/applications/luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openvpn-server
-rm -rf feeds/luci/applications/luci-app-passwall
-rm -rf feeds/luci/applications/luci-app-passwall2
 rm -rf feeds/packages/net/smartdns
 rm -rf feeds/luci/applications/luci-app-smartdns
 rm -rf feeds/luci/applications/luci-app-softether
