@@ -13,7 +13,7 @@ mv $GITHUB_WORKSPACE/patch/tk/bw-diy.sh package/base-files/files/etc/uci-default
 mv $GITHUB_WORKSPACE/patch/tk/bw-index.htm package/base-files/files/etc/bw-index.htm
 
 
-mv $GITHUB_WORKSPACE/patch/lean/patch/fstools-Makefile package/system/fstools/Makefile
+#mv $GITHUB_WORKSPACE/patch/lean/patch/fstools-Makefile package/system/fstools/Makefile
 
 #小米4a千兆版
 # mv $GITHUB_WORKSPACE/patch/lean/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi target/linux/ramips/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi
