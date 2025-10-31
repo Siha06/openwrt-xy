@@ -17,7 +17,9 @@ sed -i '/helloworld/d' /etc/opkg/distfeeds.conf
 sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -i '/core/d' /etc/opkg/distfeeds.conf
 
-
+uci del network.wan6
+uci commit network
+uci commit
 /etc/init.d/network restart
 
 exit 0
