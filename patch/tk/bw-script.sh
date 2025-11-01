@@ -16,6 +16,7 @@ mv $GITHUB_WORKSPACE/patch/tk/bw-index.htm package/base-files/files/etc/bw-index
 #mv $GITHUB_WORKSPACE/patch/lean/patch/fstools-Makefile package/system/fstools/Makefile
 
 #dts
+rm -rf target/linux/ramips/dts/mt7621_jcg_q20.dts
 mv $GITHUB_WORKSPACE/patch/lean/dts/mt7621_jcg_q20.dts target/linux/ramips/dts/mt7621_jcg_q20.dts
 # mv $GITHUB_WORKSPACE/patch/lean/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi target/linux/ramips/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi
 # sed -i 's/14848/16064/g' target/linux/ramips/image/mt7621.mk
