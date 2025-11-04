@@ -1,18 +1,16 @@
 #!/bin/sh
 
-uci set wireless.radio0.country=CN
-uci set wireless.radio0.txpower=20
-uci set wireless.radio1.country=CN
-uci set wireless.radio1.txpower=20
+#uci set wireless.radio0.country=CN
+#uci set wireless.radio0.txpower=20
+#uci set wireless.radio1.country=CN
+#uci set wireless.radio1.txpower=20
 #uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
-uci set wireless.default_radio0.ssid=Open-5G
-uci set wireless.default_radio0.encryption=psk2+ccmp
-uci set wireless.default_radio0.key=open12345
+#uci set wireless.default_radio0.encryption=psk2+ccmp
+#uci set wireless.default_radio0.key=password
 #uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
-uci set wireless.default_radio1.ssid=Open-2.4G
-uci set wireless.default_radio1.encryption=psk2+ccmp
-uci set wireless.default_radio1.key=open12345
-uci commit wireless
+#uci set wireless.default_radio1.encryption=psk2+ccmp
+#uci set wireless.default_radio1.key=password
+#uci commit wireless
 
 
 
@@ -25,6 +23,8 @@ uci set dropbear.@dropbear[0].Interface=''
 uci commit
 
 sed -i 's#mirrors.tencent.com/lede#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/distfeeds.conf
+sed -i '/Modem/d' /etc/opkg/distfeeds.conf
+sed -i '/modem/d' /etc/opkg/distfeeds.conf
 sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -i '/ssrp/d' /etc/opkg/distfeeds.conf
 sed -i '/helloworld/d' /etc/opkg/distfeeds.conf
@@ -41,8 +41,12 @@ echo "DISTRIB_REVISION='V${date_version}'" >> /etc/openwrt_release
 sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
 echo "DISTRIB_DESCRIPTION='OpenWrt  '" >> /etc/openwrt_release
 
-sed -i 's/root::0:0:99999:7:::/root:$1$1vyz2.3V$ljAyqPqLXaxVgkqGLleTY0:0:0:99999:7:::/g' /etc/shadow
-sed -i 's/root:::0:99999:7:::/root:$1$1vyz2.3V$ljAyqPqLXaxVgkqGLleTY0:0:0:99999:7:::/g' /etc/shadow
+sed -i '/OPENWRT_RELEASE/d' /usr/lib/os-release
+echo "OPENWRT_RELEASE='OpenWrt V${date_version}'" >> /usr/lib/os-release
+
+#sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
+#sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
+
 cp /etc/my-clash /etc/openclash/core/clash_meta
 
 /etc/init.d/network restart
