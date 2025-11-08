@@ -10,10 +10,10 @@
 	model = "Xiaomi Mi Router CR660x";
 
 	aliases {
-		led-boot = &led_sys_yellow;
-		led-failsafe = &led_sys_yellow;
-		led-running = &led_sys_blue;
-		led-upgrade = &led_sys_yellow;
+		led-boot = &led_status_red;
+		led-failsafe = &led_status_red;
+		led-running = &led_status_blue;
+		led-upgrade = &led_status_blue;
 		label-mac-device = &gmac0;
 	};
 
@@ -24,23 +24,13 @@
 	leds {
 		compatible = "gpio-leds";
 
-		led_sys_yellow: sys_yellow {
-			label = "yellow:sys";
-			gpios = <&gpio 14 GPIO_ACTIVE_LOW>;
+		led_status_red: status_red {
+			label = "red:status";
+			gpios = <&gpio 14 GPIO_ACTIVE_HIGH>;
 		};
 
-		led_sys_blue: sys_blue {
-			label = "blue:sys";
-			gpios = <&gpio 16 GPIO_ACTIVE_LOW>;
-		};
-
-		net_yellow {
-			label = "yellow:net";
-			gpios = <&gpio 13 GPIO_ACTIVE_LOW>;
-		};
-
-		net_blue {
-			label = "blue:net";
+		led_status_blue: status_blue {
+			label = "blue:status";
 			gpios = <&gpio 15 GPIO_ACTIVE_LOW>;
 		};
 	};
@@ -56,7 +46,7 @@
 
 		wps {
 			label = "wps";
-			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 16 GPIO_ACTIVE_LOW>;
 			linux,code = <KEY_WPS_BUTTON>;
 		};
 	};
@@ -139,7 +129,7 @@
 };
 
 &gsw {
-	mediatek,portmap = "llllw";
+	mediatek,portmap = "wllll";
 	status = "okay";
 };
 
