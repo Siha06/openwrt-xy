@@ -12,20 +12,25 @@ mv $GITHUB_WORKSPACE/patch/tk/mac80211.sh package/kernel/mac80211/files/lib/wifi
 mv $GITHUB_WORKSPACE/patch/tk/bw-diy.sh package/base-files/files/etc/uci-defaults/zz-diy
 mv $GITHUB_WORKSPACE/patch/tk/bw-index.htm package/base-files/files/etc/bw-index.htm
 
-
-#mv $GITHUB_WORKSPACE/patch/lean/patch/fstools-Makefile package/system/fstools/Makefile
-
 #dts
-rm -rf target/linux/ramips/dts/mt7621_jcg_q20.dts
-mv $GITHUB_WORKSPACE/patch/lean/dts/mt7621_jcg_q20.dts target/linux/ramips/dts/mt7621_jcg_q20.dts
+mv $GITHUB_WORKSPACE/patch/lean/dts/jcg_q20-based-on-cr660x.dts target/linux/ramips/dts/mt7621_xiaomi_mi-router-cr660x.dts
+#rm -rf target/linux/ramips/dts/mt7621_jcg_q20.dts
+#mv $GITHUB_WORKSPACE/patch/lean/dts/mt7621_jcg_q20.dts target/linux/ramips/dts/mt7621_jcg_q20.dts
 # mv $GITHUB_WORKSPACE/patch/lean/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi target/linux/ramips/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi
 # sed -i 's/14848/16064/g' target/linux/ramips/image/mt7621.mk
 
-if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
-    git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
-    tar -zxf package/openclash-core/master/meta/clash-linux-mipsle-softfloat.tar.gz -C package/base-files/files/etc/
-    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
-    rm -rf package/openclash-core
+if grep -q "openclash=y" .config; then
+    echo "✅ 已选择 luci-app-openclash，添加 openclash core"
+    mkdir -p files/etc/openclash/core
+    # Download clash_meta
+    META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-mipsle-softfloat.tar.gz"
+    wget -qO- $META_URL | tar xOvz > files/etc/openclash/core/clash_meta
+    chmod +x files/etc/openclash/core/clash_meta
+    # 下载 GeoIP 和 GeoSite
+    # wget -q https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -O files/etc/openclash/GeoIP.dat
+    # wget -q https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -O files/etc/openclash/GeoSite.dat
+else
+    echo "⚪️ 未选择 luci-app-openclash"
 fi
 
 # 添加kenzok8_small插件库, 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
