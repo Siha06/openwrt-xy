@@ -14,6 +14,7 @@ mv $GITHUB_WORKSPACE/patch/tk/bw-index.htm package/base-files/files/etc/bw-index
 
 #dts
 mv $GITHUB_WORKSPACE/patch/lean/dts/jcg_q20-based-on-cr660x.dts target/linux/ramips/dts/mt7621_xiaomi_mi-router-cr660x.dts
+mv $GITHUB_WORKSPACE/patch/lean/dts/02_network target/linux/ramips/mt7621/base-files/etc/board.d/02_network
 #rm -rf target/linux/ramips/dts/mt7621_jcg_q20.dts
 #mv $GITHUB_WORKSPACE/patch/lean/dts/mt7621_jcg_q20.dts target/linux/ramips/dts/mt7621_jcg_q20.dts
 # mv $GITHUB_WORKSPACE/patch/lean/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi target/linux/ramips/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi
