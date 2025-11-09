@@ -13,14 +13,14 @@ mv $GITHUB_WORKSPACE/patch/tk/bw-diy.sh package/base-files/files/etc/uci-default
 mv $GITHUB_WORKSPACE/patch/tk/bw-index.htm package/base-files/files/etc/bw-index.htm
 
 #dts
-mv $GITHUB_WORKSPACE/patch/lean/dts/jcg_q20-based-on-cr660x.dts target/linux/ramips/dts/mt7621_xiaomi_mi-router-cr660x.dts
-mv $GITHUB_WORKSPACE/patch/lean/dts/02_network target/linux/ramips/mt7621/base-files/etc/board.d/02_network
+#mv $GITHUB_WORKSPACE/patch/lean/dts/jcg_q20-based-on-cr660x.dts target/linux/ramips/dts/mt7621_xiaomi_mi-router-cr660x.dts
+#mv $GITHUB_WORKSPACE/patch/lean/dts/02_network target/linux/ramips/mt7621/base-files/etc/board.d/02_network
 #rm -rf target/linux/ramips/dts/mt7621_jcg_q20.dts
 #mv $GITHUB_WORKSPACE/patch/lean/dts/mt7621_jcg_q20.dts target/linux/ramips/dts/mt7621_jcg_q20.dts
 # mv $GITHUB_WORKSPACE/patch/lean/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi target/linux/ramips/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi
 # sed -i 's/14848/16064/g' target/linux/ramips/image/mt7621.mk
 
-if grep -q "openclash=y" .config; then
+if grep -q "openclash=y" $CONFIG_FILE; then
     echo "✅ 已选择 luci-app-openclash，添加 openclash core"
     mkdir -p files/etc/openclash/core
     # Download clash_meta
