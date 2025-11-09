@@ -14,10 +14,14 @@ sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 mv /etc/bw-index.htm /usr/lib/lua/luci/view/admin_status/index.htm
 
 sed -i '/helloworld/d' /etc/opkg/distfeeds.conf
+sed -i '/ssrp/d' /etc/opkg/distfeeds.conf
 sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -i '/core/d' /etc/opkg/distfeeds.conf
 
 uci del network.wan6
+uci del dhcp.lan.dhcpv6
+uci del dhcp.lan.ra
+uci del network.lan.ip6assign
 uci commit network
 uci commit
 /etc/init.d/network restart
