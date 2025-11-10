@@ -26,7 +26,7 @@ mv $GITHUB_WORKSPACE/patch/bw/luci-18.06/footer.htm feeds/luci/themes/luci-theme
 # mv $GITHUB_WORKSPACE/patch/lean/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi target/linux/ramips/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi
 # sed -i 's/14848/16064/g' target/linux/ramips/image/mt7621.mk
 
-if grep -q "openclash=y" $CONFIG_FILE; then
+if grep -q "openclash=y" $GITHUB_WORKSPACE/$CONFIG_FILE; then
     echo "✅ 已选择 luci-app-openclash，添加 openclash core"
     mkdir -p files/etc/openclash/core
     # Download clash_meta
