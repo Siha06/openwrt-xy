@@ -18,6 +18,11 @@ sed -i '/ssrp/d' /etc/opkg/distfeeds.conf
 sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -i '/core/d' /etc/opkg/distfeeds.conf
 
+
+
+uci set vlmcsd.config.enabled=0
+uci commit
+/etc/init.d/kms stop
 uci del network.wan6
 uci del dhcp.lan.dhcpv6
 uci del dhcp.lan.ra
