@@ -9,7 +9,7 @@ env:
   REPO_BRANCH: master
   CONFIG_FILE: config/lean-mt7621
   # DIY_SCRIPT: script/lean-762x.sh
-  DIY_SCRIPT: patch/tk/bw-script.sh
+  DIY_SCRIPT: patch/bw/script.sh
   # DIY_SCRIPT: patch/xtreme/7621.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
