@@ -38,25 +38,7 @@
 	local tree = disp.node()
 	local categories = disp.node_childs(tree)
 %>
-</div>
-<footer>
-	<div class="ftc">
-		<a class="luci-link" href="https://github.com/openwrt/luci" target="_blank">Powered by <%= ver.luciname %>
-			(<%= ver.luciversion %>)</a> /
-		<a href="https://github.com/jerrykuku/luci-theme-argon" target="_blank">ArgonTheme <%# vPKG_VERSION %></a> /
-		<%= ver.distversion %>
-		<% if #categories > 1 then %>
-		<ul class="breadcrumb pull-right" id="modemenu">
-			<% for i, r in ipairs(categories) do %>
-			<li<% if request[1] == r then %> class="active" <%end%>><a
-					href="<%=controller%>/<%=r%>/"><%=striptags(translate(tree.nodes[r].title))%></a> <span
-					class="divider">|</span></li>
-				<% end %>
-		</ul>
-		<% end %>
-	</div>
-</footer>
-</div>
+
 </div>
 	<script>
 		if (window.innerHeight < 660) {
