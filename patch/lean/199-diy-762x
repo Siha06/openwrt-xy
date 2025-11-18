@@ -26,15 +26,7 @@ sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
 echo "DISTRIB_REVISION='V${date_version}'" >> /etc/openwrt_release
 sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
 echo "DISTRIB_DESCRIPTION='OpenWrt  '" >> /etc/openwrt_release
-#echo "DISTRIB_DESCRIPTION='VX:9500622'" >> /etc/openwrt_release
 
-cp /etc/my-clash /etc/openclash/core/clash_meta
-
-
-#mv /etc/my-adgh.yaml /etc/AdGuardHome.yaml
-#mkdir /root/diy
-#mv /etc/adg.tar.gz /root/diy/adg.tar.gz
-#sysupgrade --restore-backup /root/diy/adg.tar.gz
 
 #sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
 #sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
