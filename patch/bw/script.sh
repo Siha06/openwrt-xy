@@ -29,8 +29,8 @@ mv $GITHUB_WORKSPACE/patch/bw/luci-18.06/footer.htm feeds/luci/themes/luci-theme
 if grep -q "openclash=y" $GITHUB_WORKSPACE/$CONFIG_FILE; then
     echo "✅ 已选择 luci-app-openclash，添加 openclash core"
     mkdir -p files/etc/openclash/core
-    # Download clash_meta
-    META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-mipsle-softfloat.tar.gz"
+    # Download clash_meta,clash-linux-arm64.tar.gz,clash-linux-mipsle-softfloat.tar.gz
+    #META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-arm64.tar.gz"
     wget -qO- $META_URL | tar xOvz > files/etc/openclash/core/clash_meta
     chmod +x files/etc/openclash/core/clash_meta
     # 下载 GeoIP 和 GeoSite
