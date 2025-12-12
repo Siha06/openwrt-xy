@@ -1,9 +1,9 @@
 CONFIG_TARGET_ramips=y
 CONFIG_TARGET_ramips_mt7621=y
-CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-cr660x=y
-CONFIG_TARGET_MULTI_PROFILE=n
-CONFIG_TARGET_DEVICE_ramips_mt7621_DEVICE_jcg_q20=n
-CONFIG_TARGET_DEVICE_ramips_mt7621_DEVICE_xiaomi_mi-router-cr660x=n
+CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-cr660x=n
+CONFIG_TARGET_MULTI_PROFILE=y
+CONFIG_TARGET_DEVICE_ramips_mt7621_DEVICE_jcg_q20=y
+CONFIG_TARGET_DEVICE_ramips_mt7621_DEVICE_xiaomi_mi-router-cr660x=y
 CONFIG_TARGET_DEVICE_ramips_mt7621_DEVICE_xiaomi_mi-router-3g=n
 
 CONFIG_LUCI_LANG_zh_Hans=y
