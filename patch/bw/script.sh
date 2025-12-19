@@ -18,8 +18,8 @@ git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-app-argon-config.
 
 mv $GITHUB_WORKSPACE/patch/bw/mac80211.sh package/kernel/mac80211/files/lib/wifi/mac80211.sh
 mv $GITHUB_WORKSPACE/patch/bw/zz-diy.sh package/base-files/files/etc/uci-defaults/zz-diy
-mv $GITHUB_WORKSPACE/patch/bw/luci-18.06/index.htm package/base-files/files/etc/index.htm
-mv $GITHUB_WORKSPACE/patch/bw/luci-18.06/footer.htm feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
+#mv $GITHUB_WORKSPACE/patch/bw/luci-18.06/index.htm package/base-files/files/etc/index.htm
+#mv $GITHUB_WORKSPACE/patch/bw/luci-18.06/footer.htm feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
 
 #dts
 #mv $GITHUB_WORKSPACE/patch/lean/dts/jcg_q20-based-on-cr660x.dts target/linux/ramips/dts/mt7621_xiaomi_mi-router-cr660x.dts
