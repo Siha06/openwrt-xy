@@ -1,7 +1,7 @@
 CONFIG_TARGET_ramips=y
 CONFIG_TARGET_ramips_mt7621=y
-CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-3g=n
-CONFIG_TARGET_MULTI_PROFILE=y
+CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-cr660x=y
+CONFIG_TARGET_MULTI_PROFILE=n
 CONFIG_TARGET_DEVICE_ramips_mt7621_DEVICE_jcg_q20=y
 CONFIG_TARGET_DEVICE_ramips_mt7621_DEVICE_xiaomi_mi-router-cr660x=y
 CONFIG_TARGET_DEVICE_ramips_mt7621_DEVICE_xiaomi_mi-router-3g=n
@@ -36,11 +36,11 @@ CONFIG_PACKAGE_wpad-openssl=y
 
 CONFIG_PACKAGE_kmod-tun=y
 CONFIG_PACKAGE_luci-app-adguardhome=n
-CONFIG_PACKAGE_luci-app-ddnsto=n
-CONFIG_PACKAGE_luci-app-frpc=n
+CONFIG_PACKAGE_luci-app-ddnsto=y
+CONFIG_PACKAGE_luci-app-frpc=y
 CONFIG_PACKAGE_luci-app-ddns-go=n
-CONFIG_PACKAGE_luci-app-vlmcsd=n
-CONFIG_PACKAGE_luci-app-zerotier=n
+CONFIG_PACKAGE_luci-app-vlmcsd=y
+CONFIG_PACKAGE_luci-app-zerotier=y
 
 CONFIG_PACKAGE_luci-app-openclash=y
 CONFIG_PACKAGE_luci-app-passwall=y
