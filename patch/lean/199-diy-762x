@@ -30,12 +30,16 @@ sed -i 's#mirrors.tencent.com/lede#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/d
 
 sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
 sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
-uci set wireless.default_radio0.ssid=OpenWrt-2.4G
-uci set wireless.default_radio1.ssid=OpenWrt-5G
+uci set network.lan.ipaddr=192.168.77.1
+
+uci set wireless.default_radio0.ssid=OP-2.4G
+uci set wireless.default_radio1.ssid=OP-5G
 uci set wireless.default_radio0.encryption=psk2+ccmp
 uci set wireless.default_radio1.encryption=psk2+ccmp
-uci set wireless.default_radio0.key=88888888
-uci set wireless.default_radio1.key=88888888
+uci set wireless.default_radio0.key=hs88888888
+uci set wireless.default_radio1.key=hs88888888
 uci commit wireless
+uci commit network
+uci commit
 /etc/init.d/network restart
 exit 0
