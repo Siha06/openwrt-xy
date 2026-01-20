@@ -43,6 +43,7 @@ git clone https://github.com/sbwml/luci-app-mosdns -b v5-lua package/mosdns
 git clone --depth 1 -b lua https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 git clone --depth 1 https://github.com/Erope/openwrt_nezha.git package/openwrt_nezha
+git clone --depth 1 https://github.com/miaoermua/luci-app-leigod-acc.git package/openwrt_leigod-acc
 
 #有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
 #git clone --depth 1 https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
