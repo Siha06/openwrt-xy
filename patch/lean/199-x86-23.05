@@ -41,8 +41,6 @@ sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
 echo "DISTRIB_DESCRIPTION='OpenWrt '" >> /etc/openwrt_release
 
 
-cp /etc/my-clash /etc/openclash/core/clash_meta
-
 # 根据网卡数量配置网络
 eth_count=0
 for iface in /sys/class/net/*; do
