@@ -33,7 +33,7 @@ sed -i '$a src/gz openwrt_packages https://mirrors.pku.edu.cn/openwrt/releases/2
 sed -i '$a src/gz openwrt_routing https://mirrors.pku.edu.cn/openwrt/releases/24.10.3/packages/x86_64/routing' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz openwrt_telephony https://mirrors.pku.edu.cn/openwrt/releases/24.10.3/packages/x86_64/telephony' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz openwrt_others https://mirrors.pku.edu.cn/openwrt/releases/24.10.3/targets/x86/64/packages' /etc/opkg/customfeeds.conf
-sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/x86_64/kiddin9' /etc/opkg/customfeeds.conf
+sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/packages-25.12/x86_64/kiddin9' /etc/opkg/customfeeds.conf
 date_version=$(date +"%Y.%m.%d")
 sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
 echo "DISTRIB_REVISION='V${date_version}'" >> /etc/openwrt_release
