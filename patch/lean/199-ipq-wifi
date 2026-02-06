@@ -1,16 +1,16 @@
 #!/bin/sh
 
-#uci set wireless.radio0.country=CN
-#uci set wireless.radio0.txpower=20
-#uci set wireless.radio1.country=CN
-#uci set wireless.radio1.txpower=20
-#uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
-#uci set wireless.default_radio0.encryption=psk2+ccmp
-#uci set wireless.default_radio0.key=password
-#uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
-#uci set wireless.default_radio1.encryption=psk2+ccmp
-#uci set wireless.default_radio1.key=password
-#uci commit wireless
+uci set wireless.radio0.country=CN
+uci set wireless.radio0.txpower=20
+uci set wireless.radio1.country=CN
+uci set wireless.radio1.txpower=20
+uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
+uci set wireless.default_radio0.encryption=psk2+ccmp
+uci set wireless.default_radio0.key=password
+uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
+uci set wireless.default_radio1.encryption=psk2+ccmp
+uci set wireless.default_radio1.key=password
+uci commit wireless
 
 
 
@@ -44,11 +44,11 @@ echo "DISTRIB_DESCRIPTION='OpenWrt  '" >> /etc/openwrt_release
 sed -i '/OPENWRT_RELEASE/d' /usr/lib/os-release
 echo "OPENWRT_RELEASE='OpenWrt V${date_version}'" >> /usr/lib/os-release
 
-#sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
-#sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
+sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
+sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
 
-cp /etc/my-clash /etc/openclash/core/clash_meta
 
+uci commit
 /etc/init.d/network restart
 
 exit 0
