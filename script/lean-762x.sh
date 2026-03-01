@@ -78,13 +78,17 @@ git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-app-argon-config.
 #rm -rf feeds/packages/net/eqos
 #rm -rf feeds/luci/applications/luci-app-eqos
 
-rm -rf feeds/packages/net/{adguardhome,tailscale}
+rm -rf feeds/packages/net/{adguardhome,tailscale,easytier,nps}
+rm -rf feeds/luci/applications/{luci-app-easytier,luci-app-npc}
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/luci-app-bypass package/luci-app-bypass
 mv package/kz8-small/luci-app-easymesh package/luci-app-easymesh
+mv package/kz8-small/luci-app-easytier package/luci-app-easytier
 mv package/kz8-small/luci-app-eqosplus package/luci-app-eqosplus
+mv package/kz8-small/nps package/nps
+mv package/kz8-small/luci-app-npc package/luci-app-npc
 mv package/kz8-small/tailscale package/tailscale
 mv package/kz8-small/luci-app-tailscale package/luci-app-tailscale
 rm -rf package/kz8-small
