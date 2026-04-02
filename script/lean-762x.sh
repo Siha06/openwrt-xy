@@ -71,6 +71,7 @@ rm -rf feeds/luci/applications/luci-app-argon-config
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 git clone --depth 1 https://github.com/derisamedia/luci-theme-alpha.git package/luci-theme-alpha
+git clone --depth 1 https://github.com/derisamedia/luci-theme-alpha-reborn.git package/luci-theme-alpha-reborn
 git clone --depth 1 https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
 git clone --depth 1 https://github.com/papagaye744/luci-theme-design.git package/luci-theme-design
 git clone --depth 1 https://github.com/sirpdboy/luci-theme-kucat.git package/luci-theme-kucat
