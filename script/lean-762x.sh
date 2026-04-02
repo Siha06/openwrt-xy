@@ -74,6 +74,7 @@ git clone --depth 1 https://github.com/derisamedia/luci-theme-alpha.git package/
 git clone --depth 1 https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
 git clone --depth 1 https://github.com/papagaye744/luci-theme-design.git package/luci-theme-design
 git clone --depth 1 https://github.com/sirpdboy/luci-theme-kucat.git package/luci-theme-kucat
+git clone --depth 1 https://github.com/animegasan/luci-app-alpha-config.git package/luci-app-alpha-config
 
 rm -rf feeds/packages/net/{adguardhome,tailscale,easytier,nps}
 rm -rf feeds/luci/applications/{luci-app-easytier,luci-app-npc}
