@@ -23,17 +23,13 @@ sed -i 's#mirrors.tencent.com/lede#mirrors.pku.edu.cn/immortalwrt#g' /etc/opkg/d
 
 date_version=$(date +"%Y.%m.%d")
 sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
-echo "DISTRIB_REVISION='V${date_version}'" >> /etc/openwrt_release
+echo 'DISTRIB_REVISION="V${date_version}"' >> /etc/openwrt_release
 sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
-echo "DISTRIB_DESCRIPTION='OpenWrt  '" >> /etc/openwrt_release
+echo 'DISTRIB_DESCRIPTION="OpenWrt  "' >> /etc/openwrt_release
+sed -i '/OPENWRT_RELEASE/d' /usr/lib/os-release
+echo 'OPENWRT_RELEASE="OpenWrt V${date_version}"' >> /usr/lib/os-release
 
-#uci set autoreboot.cfg01f8be.enable=1
-#uci set autoreboot.cfg01f8be.hour=5
-#uci set autoreboot.cfg01f8be.minute=0
-#uci set autoreboot.cfg01f8be.week=7
 
-#uci set firewall.cfg02dc81.masq=1
-#uci set firewall.cfg02dc81.mtu_fix=1
 
 #sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
 #sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
