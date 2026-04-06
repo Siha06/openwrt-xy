@@ -10,6 +10,7 @@ sed -i '/openwrt_release/d' package/lean/default-settings/files/zzz-default-sett
 sed -i '/os-release/d' package/lean/default-settings/files/zzz-default-settings
 sed -i 's#mirrors.tencent.com/lede#mirror.nju.edu.cn/immortalwrt#g' package/lean/default-settings/files/zzz-default-settings
 mv $GITHUB_WORKSPACE/patch/lean/199-diy-762x package/base-files/files/etc/uci-defaults/zz-diy
+mv $GITHUB_WORKSPACE/patch/mac/auto-change.sh package/base-files/files/etc/auto-change.sh
 
 #DTS
 #mv $GITHUB_WORKSPACE/patch/lean/dts/jcg_q20-based-on-cr660x.dts target/linux/ramips/dts/mt7621_xiaomi_mi-router-cr660x.dts
