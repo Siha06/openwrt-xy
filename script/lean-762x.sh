@@ -10,7 +10,7 @@ sed -i '/openwrt_release/d' package/lean/default-settings/files/zzz-default-sett
 sed -i '/os-release/d' package/lean/default-settings/files/zzz-default-settings
 sed -i 's#mirrors.tencent.com/lede#mirror.nju.edu.cn/immortalwrt#g' package/lean/default-settings/files/zzz-default-settings
 mv $GITHUB_WORKSPACE/patch/lean/199-diy-762x package/base-files/files/etc/uci-defaults/zz-diy
-mv $GITHUB_WORKSPACE/patch/mac/auto-change.sh package/base-files/files/etc/auto-change.sh
+#mv $GITHUB_WORKSPACE/patch/mac/auto-change.sh package/base-files/files/etc/auto-change.sh
 
 #DTS
 #mv $GITHUB_WORKSPACE/patch/lean/dts/jcg_q20-based-on-cr660x.dts target/linux/ramips/dts/mt7621_xiaomi_mi-router-cr660x.dts
@@ -77,6 +77,8 @@ git clone --depth 1 https://github.com/eamonxg/luci-theme-aurora.git package/luc
 git clone --depth 1 https://github.com/papagaye744/luci-theme-design.git package/luci-theme-design
 git clone --depth 1 https://github.com/sirpdboy/luci-theme-kucat.git package/luci-theme-kucat
 git clone --depth 1 https://github.com/animegasan/luci-app-alpha-config.git package/luci-app-alpha-config
+git clone --depth 1 https://github.com/mr-Abdrahimov/luci-podkop-subscribe.git package/luci-podkop-subscribe
+git clone --depth 1 https://github.com/amnezia-vpn/amneziawg-openwrt.git package/amneziawg-openwrt
 
 rm -rf feeds/packages/net/{adguardhome,tailscale,easytier,nps}
 rm -rf feeds/luci/applications/{luci-app-easytier,luci-app-npc}
